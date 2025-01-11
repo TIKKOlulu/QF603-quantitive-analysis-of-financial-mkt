@@ -1,0 +1,59 @@
+---
+title: "603 Bayesian Revision HW"
+author: "TINGJIA LU"
+date: "10/29/2024"
+output:
+  pdf_document:
+    latex_engine: xelatex
+header-includes:
+   - \usepackage{xeCJK}
+   - \usepackage{xcolor}
+---
+
+## Bayesian Analysis
+Suppose that there are 3 types of portfolio managers.
+Underperformers beat the market 5% of the time
+In-line performers beat the market 50% of the time
+Outperformers beat the market 70% of the time
+
+Initially, our prior beliefs are that any given manager is more likely to be an inline performer. This is because we do not have any additional information. The prior beliefs can be given as follows:\
+P(p = 0.05) = 10% \
+P(p = 0.50) = 80% \
+P(p = 0.70) = 10% \
+
+A new manager beats market for 2 years in a row.
+
+### 1: What is the likelihood of each of the 3 types of managers beating the market 2 years in a row? (2 points)
+$$
+\text{P}(2B \mid p = 0.05) = \left( \frac{5}{100} \right)^2 = \frac{1}{400}
+$$
+$$
+\text{P}(2B \mid p = 0.50) = \left( \frac{1}{2} \right)^2 = \frac{1}{4}
+$$
+$$
+\text{P}(2B \mid p = 0.70) = \left( \frac{7}{10} \right)^2 = \frac{49}{100}
+$$
+
+### 2: What is the unconditional probability of observing the manager beat the market 2 years in a row given prior beliefs? (2 points)\
+$$
+\text{P}(2B) =  10\%\frac{1}{400} + 80\%\frac{1}{4} + 10\%\frac{49}{100} = \text{0.00025 + 0.2 + 0.049} = 0.24925 = 24.925\%
+$$
+
+### 3: What are the updated beliefs about the manager? (2 points)\
+#### underperformer:
+$$
+\text{P}(p = 0.05 \mid 2B) = \frac{\text{P}(2B \mid p = 0.05)\text{P}(p=0.05)}{\text{P}(2B)}
+= \frac{\frac{1}{400}\frac{1}{10}}{\frac{24925}{100000}} = 0.0010030090270812437 \approx 0.001
+$$
+
+#### In-line performer:
+$$
+\text{P}(p = 0.50 \mid 2B) = \frac{\text{P}(2B \mid p = 0.50)\text{P}(p=0.50)}{\text{P}(2B)}
+= \frac{\frac{1}{4}\frac{8}{10}}{\frac{24925}{100000}} = 0.802407221664995 \approx 0.8024
+$$
+
+#### Outperformer:
+$$
+\text{P}(p = 0.70 \mid 2B) = \frac{\text{P}(2B \mid p = 0.70)\text{P}(p=0.70)}{\text{P}(2B)}
+= \frac{\frac{49}{100}\frac{1}{10}}{\frac{24925}{100000}} = 0.19658976930792377 \approx 0.1966
+$$
